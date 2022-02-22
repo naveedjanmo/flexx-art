@@ -1,0 +1,164 @@
+@font-face {
+  font-family: 'ES Rebond Grotesque';
+  font-weight: 400;
+  src: url(/public/fonts/ESRebondGrotesque-Regular.woff2);
+}
+
+@font-face {
+  font-family: 'ES Rebond Grotesque';
+  font-weight: 600;
+  src: url(/public/fonts/ESRebondGrotesque-Semibold.woff2);
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-weight: 500;
+  src: url('/public/fonts/Inter-Medium.woff2');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-weight: 600;
+  src: url('/public/fonts/Inter-SemiBold.woff2');
+}
+
+/* @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500;600&display=swap'); */
+
+html {
+  font-family: 'ES Rebond Grotesque', sans-serif;
+}
+
+:root {
+  --background-color: #ffffff;
+
+  --primary-text-color: #3e3e3e;
+  --secondary-text-color: #969696;
+
+  --inactive-color: #f2f2f2;
+
+  /* --primary-border: 3px solid
+    linear-gradient(155.35deg, #5a95f9 -2.07%, #e880cb 100%); */
+  --secondary-border: 3px solid #c3c3c3;
+}
+
+body {
+  margin: 0px 64px;
+
+  font-family: 'Inter';
+
+  background-color: var(--background-color);
+  color: var(--primary-text-color);
+}
+
+h1 {
+  font-family: 'ES Rebond Grotesque';
+  font-size: 72px;
+  font-weight: 600;
+  line-height: 100%;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  margin: auto;
+  padding: 64px 0 80px 0;
+
+  width: calc(100% - 128px);
+}
+
+button {
+  padding: 8px 20px;
+  height: 48px;
+
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 100%;
+
+  border-radius: 16px;
+  border-color: linear-gradient(to left, #743ad5, #d53a9d);
+  cursor: pointer;
+}
+
+.button-primary {
+  border: solid 3px transparent;
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0),
+      rgba(255, 255, 255, 0)
+    ),
+    linear-gradient(155.35deg, #5a95f9 -2.07%, #e880cb 100%);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  box-shadow: 2px 1000px 1px #fff inset;
+}
+
+section {
+  margin: 80px 0;
+  width: calc(100% - 128px);
+  margin: auto;
+}
+
+.container {
+  column-count: 3;
+  column-gap: 40px;
+}
+
+.card-wrap {
+  border: solid 1px #f1f1f1;
+  border-radius: 8px;
+  overflow: hidden;
+
+  box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.1);
+
+  display: grid;
+  grid-template-rows: 1fr auto;
+  margin-bottom: 40px;
+  break-inside: avoid;
+}
+
+.card-wrap img {
+  max-width: 100%;
+  display: block;
+}
+
+.card-wrap > img {
+  grid-row: 1 / -1;
+  grid-column: 1;
+}
+
+.card-content-wrap {
+  background-color: var(--background-color);
+  padding: 20px 24px;
+}
+
+.card-content {
+  margin-bottom: 16px;
+}
+
+.card-collection-title {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 150%;
+
+  padding-bottom: 2px;
+}
+
+.card-piece-name {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 150%;
+
+  color: var(--secondary-text-color);
+}
+
+.card-link {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 150%;
+
+  color: var(--secondary-text-color);
+}
