@@ -1,7 +1,11 @@
-import React from 'react';
+import { useState } from 'react';
 
-const Actions = () => {
-  return <button className="button-primary">Connect Wallet</button>;
+const Actions = ({ connectWallet }) => {
+  return (
+    <button className="button-primary" onClick={connectWallet}>
+      Connect Wallet
+    </button>
+  );
 };
 
 export default Actions;

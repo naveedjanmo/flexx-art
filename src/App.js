@@ -1,27 +1,54 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Actions from './components/Actions';
 import EthName from './components/EthName';
-import Card from './components/Card';
+import Container from './components/Container';
 
 function App() {
+  const [walletAddress, setWalletAddress] = useState(null);
+  const [nfts, setNfts] = useState([]);
+
+  const connectWallet = async () => {
+    if (typeof window.ethereum !== 'undefined') {
+      const accounts = await window.ethereum.request({
+        method: 'eth_requestAccounts',
+      });
+
+      setWalletAddress(accounts[0]);
+    }
+  };
+
+  // api fetch
+  const getNftdata = async () => {
+    // if no wallet address (null) then don't run api fetch
+    if (!walletAddress) return;
+
+    const response = await fetch(
+      `https://api.rarible.org/v0.1/items/byOwner/?owner=ETHEREUM:${walletAddress}`
+    );
+
+    const data = await response.json();
+
+    setNfts(data.items);
+
+    debugger;
+  };
+
+  // update getNftdata when walletAddress changes
+  useEffect(() => {
+    getNftdata();
+  }, [walletAddress]);
+
   return (
     <main>
       <header>
         <h1>
           <EthName />
         </h1>
-        <Actions />
+        <Actions connectWallet={connectWallet} />
       </header>
 
       <section>
-        <div className="container">
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-        </div>
+        <Container nfts={nfts} />
       </section>
     </main>
   );
