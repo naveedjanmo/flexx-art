@@ -1,7 +1,7 @@
 import React from 'react';
 
 const EthName = () => {
-  return <text>naveedjan.eth</text>;
+  return <text>yourens.eth</text>;
 };
 
 export default EthName;

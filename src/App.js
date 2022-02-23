@@ -17,7 +17,7 @@ function App() {
     }
   };
 
-  // api fetch
+  // api
   const getNftdata = async () => {
     // if no wallet address (null) then don't run api fetch
     if (!walletAddress) return;
