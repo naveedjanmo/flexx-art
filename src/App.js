@@ -29,6 +29,8 @@ function App() {
     const data = await response.json();
 
     setNfts(data.items);
+
+    // debugger;
   };
 
   // update getNftdata when walletAddress changes

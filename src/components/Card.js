@@ -3,7 +3,7 @@ import React from 'react';
 const Card = ({ nft }) => {
   return (
     <div className="card-wrap">
-      <img src={nft.meta.content[1].url} alt="" />
+      <img src={nft.meta.content[0].url} alt="" />
       <div className="card-content-wrap">
         <div className="card-content">
           <p className="card-collection-title">Collection Name</p>
