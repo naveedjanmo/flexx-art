@@ -4,39 +4,36 @@ import EthName from './components/EthName';
 import Container from './components/Container';
 
 function App() {
-  const [walletAddress, setWalletAddress] = useState(null);
-  const [nfts, setNfts] = useState([]);
+  const [accounts, setAccounts] = useState([]);
+  const [nfts, setNFTs] = useState([]);
 
-  const connectWallet = async () => {
-    if (typeof window.ethereum !== 'undefined') {
-      const accounts = await window.ethereum.request({
-        method: 'eth_requestAccounts',
-      });
-
-      setWalletAddress(accounts[0]);
-    }
+  const connectWallet = async function () {
+    let a = await window.ethereum.request({ method: 'eth_requestAccounts' });
+    setAccounts(a);
   };
 
-  // api
-  const getNftdata = async () => {
-    // if no wallet address (null) then don't run api fetch
-    if (!walletAddress) return;
-
+  async function getNFTdata() {
     const response = await fetch(
-      `https://api.rarible.org/v0.1/items/byOwner/?owner=ETHEREUM:${walletAddress}`
+      `https://api.opensea.io/api/v1/assets?owner=0x8657A1fc66eDFEBba90884F8Efb644264b1497D1&order_direction=desc&offset=0&limit=50`,
+      {
+        method: 'GET',
+        headers: {
+          Accept: 'application/json',
+          'X-API-KEY': '48e2e9a6da014248aa6aeac30f9ecd41',
+        },
+      }
     );
 
     const data = await response.json();
 
-    setNfts(data.items);
+    debugger;
 
-    // debugger;
-  };
+    setNFTs(data.assets);
+  }
 
-  // update getNftdata when walletAddress changes
   useEffect(() => {
-    getNftdata();
-  }, [walletAddress]);
+    getNFTdata();
+  }, [accounts]);
 
   return (
     <main>
